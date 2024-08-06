@@ -20,6 +20,8 @@ kotlinxCoroutinesCore = "1.9.0-RC"
 kotlinxSerializationJson = "1.7.1"
 ktor = "2.3.7"
 mvvmCore = "0.16.1"
+volley = "1.2.1"
+material3Android = "1.2.1"
 
 [libraries]
 image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "imageLoader" }
@@ -44,6 +46,8 @@ ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "mvvmCore" }
+volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
+androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
