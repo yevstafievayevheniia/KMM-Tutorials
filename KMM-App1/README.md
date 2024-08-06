@@ -8,4 +8,4 @@ This is a simple multiplatform application that displays random users' data in a
 ## Results
 | ios | android | 
 | ------------- | ------------- | 
-|  <img src="/KMM-App1/images/ios.png" width="250"> | <img src="/KMM-App1/images/ios.png" width="250"> | 
+|  <img src="/KMM-App1/images/ios.png" width="250"> | <img src="/KMM-App1/images/android.png" width="250"> | 
