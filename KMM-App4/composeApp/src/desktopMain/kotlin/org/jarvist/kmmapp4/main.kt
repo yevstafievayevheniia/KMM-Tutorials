@@ -2,12 +2,16 @@ package org.jarvist.kmmapp4
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import com.arkivanov.decompose.DefaultComponentContext
+import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.seiko.imageloader.ImageLoader
 import com.seiko.imageloader.component.setupDefaultComponents
 import com.seiko.imageloader.intercept.bitmapMemoryCacheConfig
 import com.seiko.imageloader.intercept.imageMemoryCacheConfig
 import com.seiko.imageloader.intercept.painterMemoryCacheConfig
 import okio.Path.Companion.toOkioPath
+import org.jarvist.kmmapp4.root.DefaultRootComponent
+import org.jarvist.kmmapp4.root.RootContent
 import java.io.File
 
 fun main() = application {
@@ -15,7 +19,12 @@ fun main() = application {
         onCloseRequest = ::exitApplication,
         title = "KMM-App4",
     ) {
-        App()
+        val homeViewModel = HomeViewModel()
+        val root = DefaultRootComponent(
+            DefaultComponentContext(LifecycleRegistry()),
+            homeViewModel
+        )
+        RootContent(root)
     }
 }
 

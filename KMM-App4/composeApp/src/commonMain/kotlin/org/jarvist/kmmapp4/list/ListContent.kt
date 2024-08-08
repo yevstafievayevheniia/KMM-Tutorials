@@ -1,6 +1,7 @@
-package org.jarvist.kmmapp4
+package org.jarvist.kmmapp4.list
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
@@ -25,37 +26,28 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SearchBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.seiko.imageloader.rememberImagePainter
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.ExperimentalResourceApi
-
-@OptIn(ExperimentalResourceApi::class)
-@Composable
-fun App() {
-    MaterialTheme {
-        AppContent(homeViewModel = HomeViewModel())
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppContent(homeViewModel: HomeViewModel) {
-
-    val products = homeViewModel.products.collectAsState()
+fun ListContent(
+    component: ListComponent
+) {
+    val products = component.model.subscribeAsState()
 
     BoxWithConstraints {
         val scope = this
@@ -107,11 +99,13 @@ fun AppContent(homeViewModel: HomeViewModel) {
                     }
                 }
                 items(
-                    items = products.value,
+                    items = products.value.items,
                     key = { product -> product.id.toString() }) { product ->
                     Card(
                         shape = RoundedCornerShape(15.dp),
-                        modifier = Modifier.padding(8.dp).fillMaxWidth(),
+                        modifier = Modifier.padding(8.dp).fillMaxWidth().clickable {
+                            component.onItemPressed(product)
+                        },
                         elevation = 2.dp
                     ) {
                         Column(

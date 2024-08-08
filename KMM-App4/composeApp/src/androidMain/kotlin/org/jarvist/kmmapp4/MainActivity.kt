@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import com.arkivanov.decompose.defaultComponentContext
 import com.seiko.imageloader.ImageLoader
 import com.seiko.imageloader.LocalImageLoader
 import com.seiko.imageloader.cache.memory.maxSizePercent
@@ -12,6 +14,8 @@ import com.seiko.imageloader.component.setupDefaultComponents
 import com.seiko.imageloader.defaultImageResultMemoryCache
 import com.seiko.imageloader.option.androidContext
 import okio.Path.Companion.toOkioPath
+import org.jarvist.kmmapp4.root.DefaultRootComponent
+import org.jarvist.kmmapp4.root.RootContent
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +25,12 @@ class MainActivity : ComponentActivity() {
             CompositionLocalProvider(
                 LocalImageLoader provides remember { generateImageLoader() },
             ) {
-                App()
+                val homeViewModel = HomeViewModel()
+                val root = DefaultRootComponent(
+                    defaultComponentContext(),
+                    homeViewModel
+                )
+                RootContent(root)
             }
         }
     }

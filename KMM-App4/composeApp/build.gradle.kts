@@ -78,6 +78,8 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.mvvm.core)
             api(libs.image.loader)
+            implementation(libs.decompose)
+            implementation(libs.decompose.extensions.compose)
         }
     }
 }
