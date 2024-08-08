@@ -2,23 +2,27 @@ package org.jarvist.kmmapp4
 
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
-import androidx.compose.ui.window.ComposeUIViewController
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.window.CanvasBasedWindow
 import com.seiko.imageloader.ImageLoader
 import com.seiko.imageloader.LocalImageLoader
 import com.seiko.imageloader.component.setupDefaultComponents
 import com.seiko.imageloader.intercept.bitmapMemoryCacheConfig
 import com.seiko.imageloader.intercept.imageMemoryCacheConfig
 import com.seiko.imageloader.intercept.painterMemoryCacheConfig
-import okio.Path.Companion.toPath
-import platform.Foundation.NSCachesDirectory
-import platform.Foundation.NSSearchPathForDirectoriesInDomains
-import platform.Foundation.NSUserDomainMask
+import okio.FileSystem
+import org.jetbrains.skiko.wasm.onWasmReady
 
-fun MainViewController() = ComposeUIViewController {
-    CompositionLocalProvider(
-        LocalImageLoader provides remember { generateImageLoader() },
-    ) {
-        App()
+@OptIn(ExperimentalComposeUiApi::class)
+fun main() {
+    onWasmReady {
+        CanvasBasedWindow("KMM-App3") {
+            CompositionLocalProvider(
+                LocalImageLoader provides remember { generateImageLoader() },
+            ) {
+                App()
+            }
+        }
     }
 }
 
@@ -41,17 +45,9 @@ fun generateImageLoader(): ImageLoader {
                 maxSize(50)
             }
             diskCacheConfig {
-                directory(getCacheDir().toPath().resolve("image_cache"))
+                directory(FileSystem.SYSTEM_TEMPORARY_DIRECTORY)
                 maxSizeBytes(512L * 1024 * 1024) // 512MB
             }
         }
     }
-}
-
-private fun getCacheDir(): String {
-    return NSSearchPathForDirectoriesInDomains(
-        NSCachesDirectory,
-        NSUserDomainMask,
-        true,
-    ).first() as String
 }
