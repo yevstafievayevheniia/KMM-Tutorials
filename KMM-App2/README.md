@@ -2,7 +2,7 @@
 ## About
 This is a simple multiplatform application that displays random products' data in a list.
 
-To launch the web browser, add the following environment
+To launch the desktop, add the following environment
 ```
 composeApp:run
 ```
