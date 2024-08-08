@@ -1,14 +1,43 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
+# KMM-App4 -> Navigation using Decompose
+## About
+This is a simple multiplatform application that displays random products' data in a list.
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+## Resources
+[api] -> [link](https://fakestoreapi.com/)
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+[tutorial] -> [link](https://youtu.be/h0dAozvpm5M?si=SU1K68mIg2OQz5lt)
 
+[decompose lib] -> [link](https://arkivanov.github.io/Decompose/)
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Dependencies 
+<b>build.gradle.kts</b>
+```
+commonMain.dependencies {
+    implementation(libs.decompose)
+    implementation(libs.decompose.extensions.compose)
+}
+```
+<b>libs.versions.toml</b>
+```
+[versions]
+decompose = "3.1.0"
+
+[libraries]
+decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+decompose-extensions-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
+```
+## Environment 
+To launch the desktop, add the following environment
+```
+composeApp:run
+```
+To launch the web browser, add the following environment
+```
+composeApp:jsBrowserDevelopmentRun
+```
+<img src="https://github.com/user-attachments/assets/9161100d-c933-4848-b01a-86af68522eb7" width="500" >
+
+## Results
+| ios |
+| ------------- |
+|  <video src="https://github.com/user-attachments/assets/3976427e-2daf-472e-8dc6-cf21829b457c">
