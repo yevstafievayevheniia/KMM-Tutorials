@@ -1,6 +1,13 @@
 # KMM-App2 -> iOS & Android & Desktop with sharing UI
 ## About
 This is a simple multiplatform application that displays random products' data in a list.
+
+To launch the web browser, add the following environment
+```
+composeApp:run
+```
+<img src="https://github.com/user-attachments/assets/f7b5b0fb-f2a2-400e-aa6f-a6fd46b42e53" width="500" >
+
 ## Resources
 [api] -> [link](https://fakestoreapi.com/)
 
