@@ -61,6 +61,13 @@ mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "mvvmCore" }
 image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "imageLoader" }
 ```
 
+## Environment 
+To launch the desktop, add the following environment
+```
+composeApp:run
+```
+<img src="https://github.com/user-attachments/assets/9161100d-c933-4848-b01a-86af68522eb7" width="500" >
+
 ## Results
 | ios | android | desktop |
 | ------------- | ------------- | ------------- |  
