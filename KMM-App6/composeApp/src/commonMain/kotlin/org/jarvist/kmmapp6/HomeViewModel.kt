@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.jarvist.kmmapp6.data.Product
 
-class HomeViewModel: ViewModel() {
-
-    private val homeRepository = HomeRepository()
+class HomeViewModel(
+    private val homeRepository: HomeRepository
+): ViewModel() {
 
     private val _products = MutableStateFlow<List<Product>>(listOf())
     val products = _products.asStateFlow()

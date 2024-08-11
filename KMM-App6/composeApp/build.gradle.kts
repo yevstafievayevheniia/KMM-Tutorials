@@ -54,6 +54,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
 
             implementation(libs.ktor.client.android)
+            implementation(libs.koin.android)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -84,6 +85,7 @@ kotlin {
             api(libs.image.loader)
             implementation(libs.decompose)
             implementation(libs.decompose.extensions.compose)
+            implementation(libs.koin.core)
         }
     }
 }
