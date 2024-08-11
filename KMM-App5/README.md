@@ -1,14 +1,48 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
+# KMM-App5 -> iOS Liffecycle
+## About
+This is a simple multiplatform application that displays random products' data in a list.
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+## Resources
+[api] -> [link](https://fakestoreapi.com/)
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+[tutorial] -> [link](https://youtu.be/-QqcJGylbSo?si=D3i1AzhIS4uYTEhS)
 
+[decompose lifecycle lib] -> [link](https://github.com/arkivanov/Essenty)
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Dependencies 
+<b>build.gradle.kts</b>
+```
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach { iosTarget ->
+        iosTarget.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
+            export(libs.decompose)
+            export(libs.lifecycle)
+        }
+    }
+    ...
+    iosMain.dependencies {
+        api(libs.decompose)
+        api(libs.lifecycle)
+    }
+
+```
+## Environment 
+To launch the desktop, add the following environment
+```
+composeApp:run
+```
+To launch the web browser, add the following environment
+```
+composeApp:jsBrowserDevelopmentRun
+```
+<img src="https://github.com/user-attachments/assets/9161100d-c933-4848-b01a-86af68522eb7" width="500" >
+
+## Results
+| ios Lifecycle |
+| ------------- |
+|  <video src="https://github.com/user-attachments/assets/9bac760a-8d12-463e-87da-ee5b2fbd58fd"> |
