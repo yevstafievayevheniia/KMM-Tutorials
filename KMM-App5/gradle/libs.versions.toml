@@ -19,6 +19,7 @@ kotlinx-coroutines = "1.8.1"
 kotlinxCoroutinesCore = "1.9.0-RC"
 kotlinxSerializationJson = "1.7.1"
 ktor = "3.0.0-beta-2"
+lifecycle = "2.1.0"
 mvvmCore = "0.16.1"
 volley = "1.2.1"
 material3Android = "1.2.1"
@@ -47,6 +48,7 @@ ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negoti
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+lifecycle = { module = "com.arkivanov.essenty:lifecycle", version.ref = "lifecycle" }
 mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "mvvmCore" }
 volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }

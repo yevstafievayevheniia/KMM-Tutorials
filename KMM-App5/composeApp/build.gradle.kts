@@ -41,6 +41,8 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            export(libs.decompose)
+            export(libs.lifecycle)
         }
     }
     
@@ -55,6 +57,8 @@ kotlin {
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            api(libs.decompose)
+            api(libs.lifecycle)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

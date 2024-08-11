@@ -5,6 +5,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.ComposeUIViewController
 import com.arkivanov.decompose.DefaultComponentContext
+import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import com.seiko.imageloader.ImageLoader
 import com.seiko.imageloader.LocalImageLoader
@@ -14,21 +15,49 @@ import com.seiko.imageloader.intercept.imageMemoryCacheConfig
 import com.seiko.imageloader.intercept.painterMemoryCacheConfig
 import okio.Path.Companion.toPath
 import org.jarvist.kmmapp5.root.DefaultRootComponent
+import org.jarvist.kmmapp5.root.RootComponent
 import org.jarvist.kmmapp5.root.RootContent
 import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSSearchPathForDirectoriesInDomains
 import platform.Foundation.NSUserDomainMask
 
-fun MainViewController() = ComposeUIViewController {
+fun MainViewController(rootComponent: RootComponent) = ComposeUIViewController {
     CompositionLocalProvider(
         LocalImageLoader provides remember { generateImageLoader() },
     ) {
-        val homeViewModel = HomeViewModel()
-        val root = DefaultRootComponent(
-            DefaultComponentContext(LifecycleRegistry()),
-            homeViewModel
-        )
-        RootContent(root)
+        RootContent(rootComponent)
+    }
+}
+
+class LifecycleCallbacksImpl: Lifecycle.Callbacks {
+    override fun onCreate() {
+        super.onCreate()
+        println("Compose onCreate")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        println("Compose onDestroy")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("Compose onPause")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        println("Compose onResume")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        println("Compose onStart")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        println("Compose onStop")
     }
 }
 
