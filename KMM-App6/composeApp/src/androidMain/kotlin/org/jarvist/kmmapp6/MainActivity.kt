@@ -14,7 +14,6 @@ import com.seiko.imageloader.component.setupDefaultComponents
 import com.seiko.imageloader.defaultImageResultMemoryCache
 import com.seiko.imageloader.option.androidContext
 import okio.Path.Companion.toOkioPath
-import org.jarvist.kmmapp6.root.DefaultRootComponent
 import org.jarvist.kmmapp6.root.RootComponent
 import org.jarvist.kmmapp6.root.RootContent
 import org.koin.android.ext.android.inject

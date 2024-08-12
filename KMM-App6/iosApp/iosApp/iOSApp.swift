@@ -7,7 +7,7 @@ struct iOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self)
     var appDelegate:AppDelegate
     var rootHolder: RootHolder {
-        appDelegate.rootHolder
+        appDelegate.getRootHolder()
     }
 
     var body: some Scene {
@@ -48,14 +48,8 @@ class RootHolder: ObservableObject {
     let root: RootComponent
 
     init() {
-        self.lifecycle = LifecycleRegistryKt.LifecycleRegistry()
-        self.lifecycle.subscribe(callbacks: LifecycleCallbacksImpl())
-
-        let homeViewModel = HomeViewModel()
-        self.root = DefaultRootComponent(
-            componentContext: DefaultComponentContext(lifecycle: lifecycle),
-            homeViewModel: homeViewModel
-        )
+        self.lifecycle = koin.lifecycleRegistry
+        self.root = koin.rootComponent
         LifecycleRegistryExtKt.create(lifecycle)
     }
 
@@ -65,5 +59,22 @@ class RootHolder: ObservableObject {
 }
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-    let rootHolder: RootHolder = RootHolder()
+
+    var rootHolder: RootHolder?
+
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) -> Bool {
+        startKoin()
+        rootHolder = RootHolder()
+        return true
+    }
+
+    func getRootHolder() -> RootHolder {
+        if rootHolder == nil {
+            rootHolder = RootHolder()
+        }
+        return rootHolder!
+    }
 }
