@@ -8,7 +8,6 @@ import com.seiko.imageloader.intercept.bitmapMemoryCacheConfig
 import com.seiko.imageloader.intercept.imageMemoryCacheConfig
 import com.seiko.imageloader.intercept.painterMemoryCacheConfig
 import okio.Path.Companion.toOkioPath
-import org.jarvist.kmmapp6.di.startKoin
 import org.jarvist.kmmapp6.di.startKoinJVM
 import org.jarvist.kmmapp6.root.RootComponent
 import org.jarvist.kmmapp6.root.RootContent
@@ -19,7 +18,7 @@ var koin = startKoinJVM().koin
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
-        title = "KMM-App4",
+        title = "KMM-App6",
     ) {
         RootContent(koin.get<RootComponent>())
     }
@@ -80,4 +79,4 @@ private fun getCacheDir() = when (currentOperatingSystem) {
     else -> throw IllegalStateException("Unsupported operating system")
 }
 
-private const val ApplicationName = "KMM-App4"
+private const val ApplicationName = "KMM-App6"

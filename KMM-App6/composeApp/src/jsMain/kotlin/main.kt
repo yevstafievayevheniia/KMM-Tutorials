@@ -21,7 +21,7 @@ val koin = startKoinJS().koin
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
     onWasmReady {
-        CanvasBasedWindow("KMM-App5") {
+        CanvasBasedWindow("KMM-App6") {
             CompositionLocalProvider(
                 LocalImageLoader provides remember { generateImageLoader() },
             ) {
