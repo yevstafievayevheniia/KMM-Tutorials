@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 
     kotlin("plugin.serialization") version "2.0.0"
+    id("app.cash.sqldelight") version "2.0.2"
 }
 
 kotlin {
@@ -55,15 +56,24 @@ kotlin {
 
             implementation(libs.ktor.client.android)
             implementation(libs.koin.android)
+            implementation(libs.android.driver)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
             api(libs.decompose)
             api(libs.lifecycle)
+            implementation(libs.native.driver)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+            implementation(libs.sqlite.driver)
+        }
+        jsMain.dependencies {
+            implementation(libs.web.worker.driver)
+            implementation(devNpm("copy-webpack-plugin", "9.1.0"))
+            implementation(npm("@cashapp/sqldelight-sqljs-worker", "2.0.2"))
+            implementation(npm("sql.js", "1.8.0"))
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -144,4 +154,13 @@ compose.desktop {
 
 compose.experimental {
     web.application {}
+}
+
+sqldelight {
+    databases {
+        create("AppDatabase") {
+            packageName.set("org.jarvist.kmmapp7")
+            generateAsync.set(true)
+        }
+    }
 }

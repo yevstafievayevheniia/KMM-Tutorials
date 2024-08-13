@@ -14,6 +14,7 @@ import com.seiko.imageloader.component.setupDefaultComponents
 import com.seiko.imageloader.defaultImageResultMemoryCache
 import com.seiko.imageloader.option.androidContext
 import okio.Path.Companion.toOkioPath
+import org.jarvist.kmmapp7.database.DriverFactory
 import org.jarvist.kmmapp7.root.RootComponent
 import org.jarvist.kmmapp7.root.RootContent
 import org.koin.android.ext.android.inject
@@ -25,6 +26,9 @@ class MainActivity : ComponentActivity() {
     private val modules = module {
         single<ComponentContext> {
             defaultComponentContext()
+        }
+        single {
+            DriverFactory(applicationContext)
         }
     }
     private val rootComponent: RootComponent by inject()

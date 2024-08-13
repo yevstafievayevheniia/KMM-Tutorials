@@ -22,12 +22,14 @@ kotlinxSerializationJson = "1.7.1"
 ktor = "3.0.0-beta-2"
 lifecycle = "2.1.0"
 mvvmCore = "0.16.1"
+nativeDriver = "2.0.2"
 volley = "1.2.1"
 material3Android = "1.2.1"
 runtimeAndroid = "1.6.8"
 decompose = "3.1.0"
 
 [libraries]
+android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "nativeDriver" }
 image-loader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "imageLoader" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinCore" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCore" }
@@ -53,11 +55,14 @@ ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "k
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 lifecycle = { module = "com.arkivanov.essenty:lifecycle", version.ref = "lifecycle" }
 mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "mvvmCore" }
+native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "nativeDriver" }
+sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "nativeDriver" }
 volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
 androidx-material3-android = { group = "androidx.compose.material3", name = "material3-android", version.ref = "material3Android" }
 androidx-runtime-android = { group = "androidx.compose.runtime", name = "runtime-android", version.ref = "runtimeAndroid" }
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-extensions-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
+web-worker-driver = { module = "app.cash.sqldelight:web-worker-driver", version.ref = "nativeDriver" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
