@@ -65,6 +65,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.mvvm.core)
+            implementation(libs.firebase.auth)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -109,6 +110,9 @@ android {
         debugImplementation(compose.uiTooling)
     }
 }
+dependencies {
+    implementation(libs.firebase.firestore.ktx)
+}
 
 compose.desktop {
     application {
@@ -120,4 +124,8 @@ compose.desktop {
             packageVersion = "1.0.0"
         }
     }
+}
+
+compose.experimental {
+    web.application {}
 }

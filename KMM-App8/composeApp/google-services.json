@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1028413608341",
+    "project_id": "bimooddevelopment",
+    "storage_bucket": "bimooddevelopment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028413608341:android:79a7f1c9a5a0b5158e269c",
+        "android_client_info": {
+          "package_name": "org.jarvist.kmmapp8"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcV0J7gyosFcYt3QoVepAaLx4dJBUPRt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
