@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "984753564343",
+    "project_id": "kmp-test-11313",
+    "storage_bucket": "kmp-test-11313.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984753564343:android:b9a15098954d89bcf37b32",
+        "android_client_info": {
+          "package_name": "org.yevy.kmmfirestore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHFPyKlz4WbWq7NPvqeEJnHx3A8-L5DlI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
